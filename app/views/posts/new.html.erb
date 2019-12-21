@@ -1,0 +1,30 @@
+<h1> new posts </h1>
+<%
+=begin%>
+*comment*
+here post is its ID(never used it before) created and f is form variable and form_for is a form helper
+
+here title/body is a argument like a tag
+
+
+<%
+=end%>
+
+<%= form_for :post,url:posts_path do |f|  %>  
+    <% if @post.errors.any? %>
+      <%  @post.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %></div>
+      <%end%>
+    <% end %>
+<p>
+<%= f.label :title %> <br>
+<%= f.text_field :title,{:class=>"form-control" } %>
+</p>
+<p>
+<%= f.label :body %> <br>
+<%= f.text_area :body, {:class=>"form-control" } %> 
+</p>
+<p>
+<%= f.submit("save" , {:class=>"btn btn-primary"}) %>
+</p>
+<% end %>

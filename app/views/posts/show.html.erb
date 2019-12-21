@@ -1,0 +1,27 @@
+<div class="container" style="padding-top:60px;">
+<hr>
+<h1> <%= @post.title %> </h1>
+<p><%= @post.body%></p>
+ <%= link_to "Read all" , {:container => "posts" , :action=> "index" } ,{ :class=>"btn btn-default"}%>  
+<%= link_to "EDIT" ,  {:container => "posts" , :action=> "edit" } ,{ :class=>"btn btn-default " }%>
+<%= link_to "Delete" ,  post_path(@post), method: :delete, data: {confirm:"Are you sure?"} ,:class=>"btn btn-danger" %>
+<hr>
+</div>
+<h3>Add comment #see code</h3 >
+<%
+=begin%>
+ <%= form_for([[@post, @post.comments.build]) do |f|  %>  
+  <p>   
+<%= f.label :username %> <br>
+<%= f.text_field(:username ,{:class=>"form-control" }) %>
+</p>
+<p>
+<%= f.label :body %> <br>
+<%= f.text_area(:body, {:class=>"form-control" }) %> 
+</p>
+<p>
+<%= f.submit({:class=>"btn btn-primary"}) %>   
+</p>
+<% end %> 
+<%
+=end%>
